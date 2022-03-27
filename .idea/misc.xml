@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable-v24/blural.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/bottomnav_roundedcorner.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/dialog_background_inset.xml" value="0.1" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_addimg.xml" value="0.3215" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_back_details.xml" value="0.3105" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_chat.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_logout.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_next.xml" value="0.3015" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_person.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_phone.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_schedule.xml" value="0.1835" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_time_details.xml" value="0.3105" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/side_nav_bar.xml" value="0.1575" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/textfield_blural.xml" value="0.1665" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/toolbar_style.xml" value="0.1" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/update_password_dialog.xml" value="0.1" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/white_bg.xml" value="0.3105" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/activity_admin_main.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/activity_authentication.xml" value="0.25" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/activity_main.xml" value="0.1358695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/activity_main2.xml" value="0.358695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/activity_owner_main.xml" value="0.22" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/app_bar.xml" value="0.11574074074074074" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/app_bar_main.xml" value="0.358695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/content_admin_main.xml" value="0.18802083333333333" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/content_main.xml" value="0.35260416666666666" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_create.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_details.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_entertainment.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_gallery.xml" value="0.358695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_home2.xml" value="0.14722222222222223" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_libraries.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_login.xml" value="0.33064516129032256" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_navigate.xml" value="0.22" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_place_details.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_places_recycler.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_profile2.xml" value="0.14722222222222223" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_register.xml" value="0.28087649402390436" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_residence.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_restaurants.xml" value="0.2608695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_slideshow.xml" value="0.358695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/header.xml" value="0.25" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/nav_header_main.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/post_item.xml" value="0.5" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/post_item_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/single_request_item.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/update_password_dialog.xml" value="0.25555555555555554" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/activity_main_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/admin_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/bottomnav_menu.xml" value="0.36102564102564105" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/main_activity2.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/owner_sidemenu.xml" value="0.36666666666666664" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/side_menu.xml" value="0.33" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/menu/toolbar_menu.xml" value="0.36666666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
