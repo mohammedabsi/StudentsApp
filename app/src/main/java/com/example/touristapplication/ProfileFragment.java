@@ -135,7 +135,13 @@ public class ProfileFragment extends Fragment {
                 binding.typeProfile.setText(task.getResult().getString("accounttype"));
                 binding.emailProfile.setText(task.getResult().getString("email"));
                 binding.phoneProfile.setText(task.getResult().getString("phone"));
-                Picasso.get().load(task.getResult().getString("imageUrl")).into(binding.profilePhoto);
+                if (task.getResult().getString("imageUrl")!= null){
+
+                    Picasso.get().load(task.getResult().getString("imageUrl")).into(binding.profilePhoto);
+
+                }else {
+                    binding.profilePhoto.setImageDrawable(getResources().getDrawable(R.drawable.ic_launcher_foreground));
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -170,6 +176,9 @@ public class ProfileFragment extends Fragment {
     }
 
     private void uploadFile() {
+
+        binding.profileProgress.setVisibility(View.VISIBLE);
+
         if (mImageUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
@@ -194,6 +203,8 @@ public class ProfileFragment extends Fragment {
                                     System.out.println(ImageUrl);
                                     firestore.collection("User").document(currentemail).update(map);
                                     Toast.makeText(getActivity(), R.string.success, Toast.LENGTH_SHORT).show();
+                                    binding.profileProgress.setVisibility(View.GONE);
+
 
                                 }
                             });
@@ -205,6 +216,8 @@ public class ProfileFragment extends Fragment {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                            binding.profileProgress.setVisibility(View.GONE);
+
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -248,6 +261,8 @@ public class ProfileFragment extends Fragment {
         String username = binding.usernameProfile.getText().toString().trim();
         String phone = binding.phoneProfile.getText().toString().trim();
 
+
+
         HashMap hashMap = new HashMap();
         hashMap.put("userName", username);
         hashMap.put("phone", phone);
@@ -257,11 +272,13 @@ public class ProfileFragment extends Fragment {
         firestore.collection("User").document(currentemail).update(hashMap).addOnSuccessListener(new OnSuccessListener() {
             @Override
             public void onSuccess(Object o) {
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getActivity(), e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }

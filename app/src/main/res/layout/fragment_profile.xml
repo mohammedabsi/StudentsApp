@@ -184,4 +184,13 @@
         android:textSize="13sp"
         android:visibility="gone" />
 
+    <ProgressBar
+        android:id="@+id/profileProgress"
+        android:layout_width="25dp"
+        android:visibility="gone"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+
+        />
+
 </LinearLayout>

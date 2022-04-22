@@ -39,7 +39,7 @@
     <string name="timeframe">"Choose time "</string>
     <string name="day">Days Open</string>
     <string name="time">Available between</string>
-    <string name="cc" >Choose your category :</string>
+
 
     <string name="Sat" >Saturday</string>
     <string name="Sun"> Sunday</string>
@@ -50,7 +50,6 @@
     <string name="Fri" >Friday</string>
 
     <string-array name="category">
-        <item>@string/cc</item>
         <item>@string/residence</item>
         <item>@string/resturants</item>
         <item>@string/libraries</item>

@@ -272,13 +272,8 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-        if (adapterView.getItemAtPosition(i).equals("Choose your category :")) {
-
-
-        } else {
             category = adapterView.getItemAtPosition(i).toString();
-            Toast.makeText(view.getContext(), category, Toast.LENGTH_SHORT).show();
-        }
+
 
     }
 
