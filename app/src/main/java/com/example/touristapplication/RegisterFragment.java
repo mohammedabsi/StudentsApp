@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -128,9 +129,9 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
 
 
         if (!username.isEmpty()) {
-            if (!email.isEmpty()) {
+            if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 if (!phone.isEmpty()) {
-                    if (!password.isEmpty() && password.length() >= 6) {
+                    if (!password.isEmpty() && password.length() > 6) {
                         //todo: Register code
                         binding.regProgressBar.setVisibility(View.VISIBLE);
                         binding.bluralregisterlayout.setVisibility(View.VISIBLE);
@@ -251,7 +252,7 @@ public class RegisterFragment extends Fragment implements AdapterView.OnItemSele
                 }
 
             } else {
-                binding.regEmail.setError("Add your email");
+                binding.regEmail.setError("Provide valid email please ...");
                 binding.regEmail.requestFocus();
 
             }

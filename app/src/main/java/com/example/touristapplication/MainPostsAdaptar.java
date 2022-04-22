@@ -49,6 +49,11 @@ public class MainPostsAdaptar extends RecyclerView.Adapter<MainPostsAdaptar.Main
         return mainList.size();
     }
 
+    public void filterList(ArrayList<Place> filteredList) {
+        mainList = filteredList;
+        notifyDataSetChanged();
+    }
+
     public static class MainViewHolder extends RecyclerView.ViewHolder {
         ImageView single_img;
         TextView place_name_mainiten;

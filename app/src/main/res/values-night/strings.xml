@@ -28,8 +28,8 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="edit">Edit Profile</string>
-    <string name="residence">Residence</string>
-    <string name="libraries">Libraries</string>
+    <string name="residence">Student Housing</string>
+    <string name="libraries">Library</string>
     <string name="available">available</string>
     <string name="contact">Contact way</string>
     <string name="upload_post_txt">Upload Images</string>

@@ -2,11 +2,13 @@ package com.example.touristapplication;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
@@ -15,11 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.touristapplication.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,9 +42,6 @@ public class LoginFragment extends Fragment {
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
 
     FragmentLoginBinding binding;
-
-
-
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -99,6 +100,45 @@ public class LoginFragment extends Fragment {
             }
         });
 
+        binding.forgetPasswordTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText resetPass = new EditText(view.getContext());
+                AlertDialog.Builder passwordResetDialog = new AlertDialog.Builder(view.getContext());
+                passwordResetDialog.setTitle("Reset Password ?");
+                passwordResetDialog.setMessage("Enter Your Email To Receive Reset Link at your email ");
+                passwordResetDialog.setView(resetPass);
+
+                passwordResetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //extract email reset link
+
+                        String mail = resetPass.getText().toString();
+                        firebaseAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(getActivity(), "Reset link sent To Your Email", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Error ! "+e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
+                passwordResetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                passwordResetDialog.create().show();
+            }
+        });
+
         return binding.getRoot();
     }
 
@@ -119,46 +159,46 @@ public class LoginFragment extends Fragment {
                         binding.loginProgressBar.setVisibility(View.INVISIBLE);
                         binding.bluralloginlayout.setVisibility(View.INVISIBLE);
 
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
-                             if (email.equalsIgnoreCase("admin@admin.com") && password.equalsIgnoreCase("admin123")) {
-                                 Toast.makeText(getActivity(), "Login success", Toast.LENGTH_SHORT).show();
+                            if (email.equalsIgnoreCase("admin@admin.com") && password.equalsIgnoreCase("admin123")) {
+                                Toast.makeText(getActivity(), "Login success", Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(getActivity(), AdminMainActivity.class));
                                 getActivity().finish();
                             }
 
-                        firestore.collection("User").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                if (task.getResult().exists()) {
-                                    if (task.getResult().get("accounttype").toString().equalsIgnoreCase("owner")) {
-                                        startActivity(new Intent(getActivity(), OwnerMainActivity.class));
-                                        getActivity().finish();
-                                        Toast.makeText(getActivity(), "Login success", Toast.LENGTH_SHORT).show();
+                            firestore.collection("User").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.getResult().exists()) {
+                                        if (task.getResult().get("accounttype").toString().equalsIgnoreCase("owner")) {
+                                            startActivity(new Intent(getActivity(), OwnerMainActivity.class));
+                                            getActivity().finish();
+                                            Toast.makeText(getActivity(), "Login success", Toast.LENGTH_SHORT).show();
 
-                                    } else if (task.getResult().get("accounttype").toString().equalsIgnoreCase("user")) {
-                                        startActivity(new Intent(getActivity(), MainActivity.class));
-                                        getActivity().finish();
-                                        Toast.makeText(getActivity(), "Login success", Toast.LENGTH_SHORT).show();
-                                    }  else {
-                                        Toast.makeText(getActivity(), "Login failed ...", Toast.LENGTH_SHORT).show();
+                                        } else if (task.getResult().get("accounttype").toString().equalsIgnoreCase("user")) {
+                                            startActivity(new Intent(getActivity(), MainActivity.class));
+                                            getActivity().finish();
+                                            Toast.makeText(getActivity(), "Login success", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getActivity(), "Login failed ...", Toast.LENGTH_SHORT).show();
+
+                                        }
 
                                     }
+                                    binding.loginEmail.setEnabled(true);
+                                    binding.loginPassword.setEnabled(true);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    binding.loginEmail.setEnabled(true);
+                                    binding.loginPassword.setEnabled(true);
+                                    Toast.makeText(getActivity(), "Login failed" + e, Toast.LENGTH_SHORT).show();
+                                    Log.d("t", "onFailure: " + e);
 
                                 }
-                                binding.loginEmail.setEnabled(true);
-                                binding.loginPassword.setEnabled(true);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                binding.loginEmail.setEnabled(true);
-                                binding.loginPassword.setEnabled(true);
-                                Toast.makeText(getActivity(), "Login failed" + e, Toast.LENGTH_SHORT).show();
-                                Log.d("t", "onFailure: " + e);
-
-                            }
-                        });
+                            });
                         }
 
                     }
@@ -182,7 +222,6 @@ public class LoginFragment extends Fragment {
             binding.loginEmail.requestFocus();
         }
     }
-
 
 
 }

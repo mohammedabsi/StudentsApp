@@ -82,8 +82,6 @@ public class DetailsFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentDetailsBinding.inflate(inflater, container, false);
         String name = getActivity().getIntent().getStringExtra("name");
-        //ArrayList<String> imageurl = getActivity().getIntent().getStringExtra("imageurl");
-
         String st_time = getActivity().getIntent().getStringExtra("st_time");
         String end_time = getActivity().getIntent().getStringExtra("end_time");
         String contact = getActivity().getIntent().getStringExtra("contact");

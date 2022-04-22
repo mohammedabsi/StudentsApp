@@ -72,6 +72,7 @@
             android:enabled="false"
             android:focusableInTouchMode="true"
             android:gravity="start|center"
+            android:textAlignment="viewStart"
             android:inputType="text"
             android:textColor="@color/primary_appcolor" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +100,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:enabled="false"
-
+            android:gravity="start"
+            android:textAlignment="viewStart"
             android:inputType="text"
             android:textColor="@color/primary_appcolor" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -126,7 +128,7 @@
             android:enabled="false"
 
             android:gravity="start|center"
-
+            android:textAlignment="viewStart"
             android:inputType="textEmailAddress"
             android:textColor="@color/primary_appcolor" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -152,6 +154,7 @@
             android:enabled="false"
             android:gravity="start|center"
             android:inputType="textEmailAddress"
+            android:textAlignment="viewStart"
 
             android:textColor="@color/primary_appcolor" />
     </com.google.android.material.textfield.TextInputLayout>

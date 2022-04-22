@@ -18,8 +18,8 @@
     <string name="menu_slideshow">الصور</string>
     <string name="open">فتح</string>
     <string name="close">اغلاق</string>
-    <string name="edit">تعديل البروفايل</string>
-    <string name="residence">نزل سكنية</string>
+    <string name="edit">تعديل الملف الشخصي</string>
+    <string name="residence">سكن طلابي</string>
     <string name="libraries">مكتبات</string>
     <string name="available">متاح</string>
     <string name="contact">طريقة التواصل</string>
@@ -38,7 +38,7 @@
     <string name="updatepass">تغيير كلمة المرور</string>
     <string name="style">الوضع الداكن</string>
     <string name="logout">تسجيل خروج</string>
-    <string name="profile">البروفايل</string>
+    <string name="profile">الملف الشخصي</string>
     <string name="logout_success">تم تسجيل الخروج بنجاح</string>
     <string name="adcontrolpanel">لوحة التحكم</string>
     <string name="newpost">اضافة مكان</string>

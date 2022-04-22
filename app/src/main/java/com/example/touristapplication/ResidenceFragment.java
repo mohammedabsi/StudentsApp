@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +90,39 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
         initRecycler();
         RetrieveNewsData();
 
+        binding.residencstxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
+
+
+
         return binding.getRoot();
+    }
+
+    private void filter(String text) {
+        ArrayList<Place> filteredList = new ArrayList<>();
+
+        for (Place item : placesArrayList) {
+            if (item.getPlace_name().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        mainPostsAdaptar.filterList(filteredList);
     }
     private void initRecycler() {
         placesArrayList = new ArrayList<Place>();

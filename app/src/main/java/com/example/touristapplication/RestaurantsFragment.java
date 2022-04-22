@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.os.Parcelable;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,8 +100,37 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
         initRecycler();
         RetrieveNewsData();
 
+        binding.resttxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
         return binding.getRoot();
 
+    }
+
+    private void filter(String text) {
+        ArrayList<Place> filteredList = new ArrayList<>();
+
+        for (Place item : placesArrayList) {
+            if (item.getPlace_name().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        mainPostsAdaptar.filterList(filteredList);
     }
 
     private void initRecycler() {
@@ -182,7 +213,7 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
         intent.putExtra("desc", placesArrayList.get(position).getDescName());
         intent.putExtra("contact", placesArrayList.get(position).getContact());
 
-       // intent.putExtra("imgTags", (Parcelable) placesArrayList.get(position).getImgTags());
+
 
 
         ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
@@ -193,8 +224,7 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
         Bundle bundle = new Bundle();
         bundle.putSerializable("key", x);
 
-//getParentFragmentManager().beginTransaction().replace(R.id.frame_layout,
-//        new DetailsFragment()).commit();
+
         startActivity(intent);
 
     }

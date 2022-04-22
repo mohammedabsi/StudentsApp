@@ -15,6 +15,7 @@
         <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_phone.xml" value="0.1665" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_schedule.xml" value="0.1835" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/ic_time_details.xml" value="0.3105" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/search_bg.xml" value="0.2665" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/side_nav_bar.xml" value="0.1575" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/textfield_blural.xml" value="0.1665" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/drawable/toolbar_style.xml" value="0.1" />
@@ -34,7 +35,7 @@
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_entertainment.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_gallery.xml" value="0.358695652173913" />
-        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_home.xml" value="0.33" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_home2.xml" value="0.14722222222222223" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_libraries.xml" value="0.36666666666666664" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_login.xml" value="0.33064516129032256" />
@@ -45,7 +46,7 @@
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_profile2.xml" value="0.14722222222222223" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_register.xml" value="0.28087649402390436" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_residence.xml" value="0.36666666666666664" />
-        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_restaurants.xml" value="0.2608695652173913" />
+        <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_restaurants.xml" value="0.24101479915433405" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/fragment_slideshow.xml" value="0.358695652173913" />
         <entry key="..\:/projects/TouristApplication/app/src/main/res/layout/header.xml" value="0.25" />
