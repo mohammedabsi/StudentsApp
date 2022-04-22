@@ -302,9 +302,7 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
 
 
         StorageReference imagePostFolder = FirebaseStorage.getInstance().getReference().child("ImagePostsFolder");
-        for (upload_count = 0; upload_count < imagesUris.size(); upload_count++) {
-            Uri individualImage = imagesUris.get(upload_count);
-            StorageReference ImageName = imagePostFolder.child("Images" + individualImage.getLastPathSegment());
+
 
             firestore.collection("User").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -316,6 +314,15 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
 
                     if (task.getResult().getString("status").equalsIgnoreCase("1")) {
 
+
+                        for (upload_count = 0; upload_count < imagesUris.size(); upload_count++) {
+                            Uri individualImage = imagesUris.get(upload_count);
+                            StorageReference ImageName = imagePostFolder.child("Images" + individualImage.getLastPathSegment());
+
+
+
+
+
                         ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
@@ -323,7 +330,7 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
                                 Log.d("url1", "" + x);
 
                                 tags.add(x);
-                                Log.d("list","onSuccess: "+tags);
+                                Log.d("list", "onSuccess: " + tags);
 
                                 binding.createPlaceProgress.setVisibility(View.INVISIBLE);
                                 //
@@ -335,6 +342,9 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
                                         Toast.makeText(getActivity(), "Upload new place success", Toast.LENGTH_SHORT).show();
                                         imagesUris.clear();
                                         binding.createPlaceProgress.setVisibility(View.INVISIBLE);
+                                        binding.placeName.getText().clear();
+                                        binding.descName.getText().clear();
+                                        binding.contactName.getText().clear();
 
 
 
@@ -342,7 +352,7 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(getActivity(),"Error :"+ e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getActivity(), "Error :" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
                                     }
                                 });
@@ -350,13 +360,22 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
                                 //
 
 
-
                             }
 
 
                         });
 
-                    } else if (task.getResult().getString("status").equalsIgnoreCase("0")){
+                            ImageName.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    Log.d(TAG, "onSuccess: file created ");
+                                }
+                            });
+
+
+                        }
+
+                    } else if (task.getResult().getString("status").equalsIgnoreCase("0")) {
                         Toast.makeText(getActivity(), "You are not allowed to upload posts", Toast.LENGTH_SHORT).show();
                         binding.createPlaceProgress.setVisibility(View.INVISIBLE);
 
@@ -377,20 +396,7 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
 
 
 
-            ImageName.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Log.d(TAG, "onSuccess: file created ");
-                }
-            });
-
-
-        }
-
-
     }
-
-
 
 
     private void closeKeyboard() {
