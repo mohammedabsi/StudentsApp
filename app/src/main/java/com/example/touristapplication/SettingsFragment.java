@@ -135,7 +135,7 @@ public class SettingsFragment extends Fragment {
                     }
                 }else {
                     binding.styleModeSwitch.setChecked(false);
-                    Toast.makeText(getActivity(), "This feature available On Newer versions", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.version_test, Toast.LENGTH_SHORT).show();
                 }
 
             }

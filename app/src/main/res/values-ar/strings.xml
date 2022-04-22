@@ -64,5 +64,6 @@
     <string name="Thur">يوم الخميس</string>
     <string name="Fri">يوم الجمعة</string>
     <string name="success">تم تعديل البروفايل بنجاح</string>
+    <string name="version_test">هذه الخاصية متاحة للأجهزة الحديثة (أندرويد 29 او أكثر)</string>
 
 </resources>

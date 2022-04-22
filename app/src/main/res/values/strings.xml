@@ -103,5 +103,6 @@
     <string name="change">Change</string>
     <string name="more">more</string>
     <string name="success">"Update Profile Success "</string>
+    <string name="version_test">This feature available On Newer versions</string>
 
 </resources>
