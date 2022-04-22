@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">تطبيق الطلاب</string>
-    <string name="resturants">مطاعم</string>
-    <string name="entertainment">ترفيه</string>
-    <string name="coffeshop">كافيه</string>
     <string name="placename">اسم االمكان</string>
     <string name="register">تسجيل اشتراك</string>
     <string name="login">تسجيل دخول</string>
@@ -19,8 +16,6 @@
     <string name="open">فتح</string>
     <string name="close">اغلاق</string>
     <string name="edit">تعديل الملف الشخصي</string>
-    <string name="residence">سكن طلابي</string>
-    <string name="libraries">مكتبات</string>
     <string name="available">متاح</string>
     <string name="contact">طريقة التواصل</string>
     <string name="upload_post_txt">تحميل الصور</string>

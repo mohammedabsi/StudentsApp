@@ -305,26 +305,29 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
         for (upload_count = 0; upload_count < imagesUris.size(); upload_count++) {
             Uri individualImage = imagesUris.get(upload_count);
             StorageReference ImageName = imagePostFolder.child("Images" + individualImage.getLastPathSegment());
-            ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+
+            firestore.collection("User").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
-                public void onSuccess(Uri uri) {
-                    x = uri.toString();
-                    Log.d("url1", "" + x);
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    binding.createPlaceProgress.setVisibility(View.VISIBLE);
 
-                    tags.add(x);
-                    Log.d("list","onSuccess: "+tags);
-
-                    binding.createPlaceProgress.setVisibility(View.INVISIBLE);
-                    //
-                    firestore.collection("User").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                            binding.createPlaceProgress.setVisibility(View.VISIBLE);
-
-                            String cat = task.getResult().getString("category");
+                    String cat = task.getResult().getString("category");
 
 
-                            if (task.getResult().getString("status").equalsIgnoreCase("1")) {
+                    if (task.getResult().getString("status").equalsIgnoreCase("1")) {
+
+                        ImageName.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                x = uri.toString();
+                                Log.d("url1", "" + x);
+
+                                tags.add(x);
+                                Log.d("list","onSuccess: "+tags);
+
+                                binding.createPlaceProgress.setVisibility(View.INVISIBLE);
+                                //
+
                                 Place place = new Place(id, task.getResult().getString("userName"), place_name, descName, contact, st_day, end_day, fromtime, totime, x, tags);
                                 firestore.collection(cat).document(id).set(place).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
@@ -343,30 +346,36 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
 
                                     }
                                 });
-                            } else {
-                                Toast.makeText(getActivity(), "You are not allowed to upload posts", Toast.LENGTH_SHORT).show();
-                                binding.createPlaceProgress.setVisibility(View.INVISIBLE);
+
+                                //
+
+
 
                             }
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.d(TAG, "onFailure: " + e.getLocalizedMessage());
-                            binding.createPlaceProgress.setVisibility(View.INVISIBLE);
-                            Toast.makeText(getActivity(), "Upload data failed :" + e, Toast.LENGTH_SHORT).show();
-
-                        }
-                    });
-                    //
 
 
+                        });
+
+                    } else if (task.getResult().getString("status").equalsIgnoreCase("0")){
+                        Toast.makeText(getActivity(), "You are not allowed to upload posts", Toast.LENGTH_SHORT).show();
+                        binding.createPlaceProgress.setVisibility(View.INVISIBLE);
+
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, "onFailure: " + e.getLocalizedMessage());
+                    binding.createPlaceProgress.setVisibility(View.INVISIBLE);
+                    Toast.makeText(getActivity(), "Upload data failed :" + e, Toast.LENGTH_SHORT).show();
 
                 }
-
-
             });
+
+
+
+
 
             ImageName.putFile(individualImage).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
