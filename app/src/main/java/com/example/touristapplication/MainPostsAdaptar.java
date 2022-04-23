@@ -25,6 +25,8 @@ public class MainPostsAdaptar extends RecyclerView.Adapter<MainPostsAdaptar.Main
         this.recyclerViewInterface = recyclerViewInterface;
     }
 
+
+
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

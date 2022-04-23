@@ -173,6 +173,10 @@ public class EntertainmentFragment extends Fragment implements RecyclerViewInter
         intent.putExtra("end_time",placesArrayList.get(position).getTotime());
         intent.putExtra("desc",placesArrayList.get(position).getDescName());
         intent.putExtra("contact",placesArrayList.get(position).getContact());
+        ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
+        //   Log.d("list", "onItemClick: "+ x);
+
+        intent.putExtra("imgTags", x);
 
         startActivity(intent);
     }

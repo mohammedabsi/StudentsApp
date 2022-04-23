@@ -6,6 +6,11 @@
             android:id="@+id/newpost"
             android:icon="@drawable/ic_addpost"
             android:title="@string/newpost" />
+        <item
+
+            android:id="@+id/listpost"
+            android:icon="@drawable/ic_ownerposts"
+            android:title="@string/YourPosts" />
 
 
         <item
@@ -17,6 +22,10 @@
 
     <item android:title="@string/more">
         <menu>
+            <item
+                android:id="@+id/ownersettings"
+                android:icon="@drawable/ic_settings"
+                android:title="@string/action_settings" />
             <item
                 android:id="@+id/ownerlogout"
                 android:icon="@drawable/ic_logout"

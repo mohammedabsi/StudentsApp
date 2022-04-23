@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Place {
-    String id ,ownerName , place_name, descName,contact,st_day, end_day,   fromtime, totime ,imageUrl;
+    String id ,ownerName , place_name, descName,contact,st_day, end_day,   fromtime, totime ,imageUrl , post_emailId;
     List<String> imgTags;
 
 
@@ -24,7 +24,7 @@ public class Place {
 
 
 
-    public Place(String id , String ownerName, String place_name, String descName, String contact, String st_day, String end_day, String fromtime, String totime , String imageUrl , List<String> imgTags ) {
+    public Place(String id , String ownerName, String place_name, String descName, String contact, String st_day, String end_day, String fromtime, String totime , String imageUrl , List<String> imgTags , String post_emailId ) {
         this.id = id;
         this.ownerName = ownerName;
 
@@ -37,7 +37,12 @@ public class Place {
         this.totime = totime;
         this.imageUrl = imageUrl;
         this.imgTags = imgTags;
+        this.post_emailId = post_emailId;
 
+    }
+
+    public String getPost_emailId() {
+        return post_emailId;
     }
 
     public List<String> getImgTags() {

@@ -60,5 +60,12 @@
     <string name="Fri">يوم الجمعة</string>
     <string name="success">تم تعديل البروفايل بنجاح</string>
     <string name="version_test">هذه الخاصية متاحة للأجهزة الحديثة (أندرويد 29 او أكثر)</string>
+    <string name="YourPosts">المنشورات المضافة</string>
+    <string name="update">تعديل المنشور</string>
+    <string name="deletepost">حذف المنشور</string>
+    <string name="delete_title">تنبيه الحذف !</string>
+    <string name="delete_msg">هل أنت متأكد من حذف المنشور ؟</string>
+    <string name="yes">"نعم "</string>
+    <string name="no">لا</string>
 
 </resources>

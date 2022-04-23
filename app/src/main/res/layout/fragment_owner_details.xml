@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".OwnerDetailsFragment">
+
+    <EditText
+        android:id="@+id/ownplace_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/blural"
+        android:hint="@string/placename"
+        android:padding="10dp" />
+
+
+    <EditText
+        android:id="@+id/owndesc_Name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/blural"
+        android:hint="@string/desc"
+        android:maxLines="6"
+        android:padding="10dp"
+        android:scrollIndicators="start" />
+
+    <EditText
+        android:id="@+id/owncontact_Name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_marginStart="4dp"
+        android:background="@drawable/blural"
+        android:hint="@string/contact"
+        android:inputType="number"
+        android:textAlignment="viewStart"
+        android:padding="10dp"
+        android:scrollIndicators="start" />
+
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+
+            android:text="@string/day"
+      />
+
+        <Spinner
+            android:id="@+id/ownfromdayspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/until"
+
+ />
+
+        <Spinner
+            android:id="@+id/owntodayspinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="horizontal"
+   >
+
+
+        <Button
+
+            android:id="@+id/ownstart_timebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/secondry_appcolor"
+
+            android:text="@string/opentime"
+            android:textSize="13sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/until"
+            />
+
+        <Button
+            android:id="@+id/ownend_timebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="@color/secondry_appcolor"
+            android:text="@string/closetime"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/owncreatePlace_progress"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:indeterminateTint="@color/secondry_appcolor"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/ownupdatePlaceBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/createPlace_progress"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:text="@string/update"
+        android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/owndeletePlaceBtn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+     android:backgroundTint="@color/darkgrey"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        android:text="@string/deletepost"
+        android:textColor="@color/white" />
+
+</LinearLayout>

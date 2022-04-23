@@ -77,6 +77,18 @@ public class OwnerMainActivity extends AppCompatActivity implements NavigationVi
                 binding.ownerToolbar.toolBar.setTitle(R.string.profile);
                 break;
 
+            case R.id.listpost:
+                fragment = new OwnerPostsFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.ownerframe_layout, fragment).commit();
+                binding.ownerToolbar.toolBar.setTitle(R.string.YourPosts);
+                break;
+
+                case R.id.ownersettings:
+                fragment = new SettingsFragment();
+                getSupportFragmentManager().beginTransaction().replace(R.id.ownerframe_layout, fragment).commit();
+                binding.ownerToolbar.toolBar.setTitle(R.string.action_settings);
+                break;
+
             case R.id.ownerlogout:
                 FirebaseAuth.getInstance().signOut();
 

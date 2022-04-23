@@ -136,7 +136,7 @@ public class LibrariesFragment extends Fragment implements RecyclerViewInterface
 
     public void RetrieveNewsData() {
 
-        mFirebaseFirestore.collection("Libraries").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirebaseFirestore.collection("Library").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
@@ -177,7 +177,10 @@ public class LibrariesFragment extends Fragment implements RecyclerViewInterface
         intent.putExtra("end_time",placesArrayList.get(position).getTotime());
         intent.putExtra("desc",placesArrayList.get(position).getDescName());
         intent.putExtra("contact",placesArrayList.get(position).getContact());
+        ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
+        //   Log.d("list", "onItemClick: "+ x);
 
+        intent.putExtra("imgTags", x);
         startActivity(intent);
 
     }

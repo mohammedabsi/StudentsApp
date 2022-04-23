@@ -98,6 +98,10 @@ if (Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("العربية"))
     binding.userpostFromtime.setText(st_time);
     binding.userpostTotime.setText(end_time);
     binding.phoneDesc.setText(contact);
+    String placename = getActivity().getIntent().getStringExtra("place name");
+    binding.userPostName.setText(placename);
+
+
 
 
 }else if (Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("English")){
@@ -187,15 +191,17 @@ if (Locale.getDefault().getDisplayLanguage().equalsIgnoreCase("العربية"))
 
                     }
                 });
-        englishGermanTranslator.translate(getActivity().getIntent().getStringExtra("place name"))
-                .addOnSuccessListener(new OnSuccessListener<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        binding.userPostName.setText(s);
+//        englishGermanTranslator.translate(getActivity().getIntent().getStringExtra("place name"))
+//                .addOnSuccessListener(new OnSuccessListener<String>() {
+//                    @Override
+//                    public void onSuccess(String s) {
+//                        binding.userPostName.setText(s);
+//
+//
+//                    }
+//                });
 
-
-                    }
-                });     englishGermanTranslator.translate(getActivity().getIntent().getStringExtra("st_day"))
+        englishGermanTranslator.translate(getActivity().getIntent().getStringExtra("st_day"))
                 .addOnSuccessListener(new OnSuccessListener<String>() {
                     @Override
                     public void onSuccess(String s) {

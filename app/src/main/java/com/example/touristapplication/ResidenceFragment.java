@@ -136,7 +136,7 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
 
     public void RetrieveNewsData() {
 
-        mFirebaseFirestore.collection("Residence").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirebaseFirestore.collection("Student Housing").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
@@ -168,6 +168,7 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity(), MainActivity2.class);
+        Bundle bundle = new Bundle();
         intent.putExtra("name",placesArrayList.get(position).getOwnerName());
         intent.putExtra("imageurl",placesArrayList.get(position).getImageUrl());
         intent.putExtra("place name",placesArrayList.get(position).getPlace_name());
@@ -177,6 +178,10 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
         intent.putExtra("end_time",placesArrayList.get(position).getTotime());
         intent.putExtra("desc",placesArrayList.get(position).getDescName());
         intent.putExtra("contact",placesArrayList.get(position).getContact());
+        ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
+        //   Log.d("list", "onItemClick: "+ x);
+
+        intent.putExtra("imgTags", x);
 
         startActivity(intent);
     }

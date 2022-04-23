@@ -204,6 +204,9 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
     @Override
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity(), MainActivity2.class);
+
+
+
         intent.putExtra("name", placesArrayList.get(position).getOwnerName());
         intent.putExtra("place name", placesArrayList.get(position).getPlace_name());
         intent.putExtra("st_day", placesArrayList.get(position).getSt_day());
@@ -217,12 +220,12 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
 
 
         ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
-        Log.d("list", "onItemClick: "+ x);
+     //   Log.d("list", "onItemClick: "+ x);
 
         intent.putExtra("imgTags", x);
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("key", x);
+//        Bundle bundle = new Bundle();
+//        bundle.putSerializable("key", x);
 
 
         startActivity(intent);

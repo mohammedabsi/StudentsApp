@@ -57,10 +57,14 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
     private static final String TAG = "com.touristapplication";
     private int position = 0;
     private int upload_count = 0;
+    StorageReference imagePostFolder = FirebaseStorage.getInstance().getReference().child("ImagePostsFolder");
+
 
     String day = null;
     int hour, minute;
     FragmentCreateBinding binding;
+
+    String current_email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
 
     String x = null;
     ArrayList<String> tags = new ArrayList<>();
@@ -127,7 +131,8 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
         //spinner 2
         binding.todayspinner.setAdapter(adapter);
         binding.todayspinner.setOnItemSelectedListener(this);
-//upload button to firestore
+
+
         binding.createPlaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -301,10 +306,9 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
         String id = String.valueOf(System.currentTimeMillis());
 
 
-        StorageReference imagePostFolder = FirebaseStorage.getInstance().getReference().child("ImagePostsFolder");
 
 
-            firestore.collection("User").document(FirebaseAuth.getInstance().getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            firestore.collection("User").document(current_email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     binding.createPlaceProgress.setVisibility(View.VISIBLE);
@@ -327,15 +331,11 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
                             @Override
                             public void onSuccess(Uri uri) {
                                 x = uri.toString();
-                                Log.d("url1", "" + x);
-
+                          //      Log.d("url1", "" + x);
                                 tags.add(x);
-                                Log.d("list", "onSuccess: " + tags);
-
+                             //   Log.d("list", "onSuccess: " + tags);
                                 binding.createPlaceProgress.setVisibility(View.INVISIBLE);
-                                //
-
-                                Place place = new Place(id, task.getResult().getString("userName"), place_name, descName, contact, st_day, end_day, fromtime, totime, x, tags);
+                                Place place = new Place(id, task.getResult().getString("userName"), place_name, descName, contact, st_day, end_day, fromtime, totime, x, tags , current_email);
                                 firestore.collection(cat).document(id).set(place).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {

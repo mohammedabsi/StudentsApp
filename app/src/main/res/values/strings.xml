@@ -41,13 +41,13 @@
     <string name="time">Available between</string>
 
 
-    <string name="Sat" >Saturday</string>
+    <string name="Sat">Saturday</string>
     <string name="Sun"> Sunday</string>
-    <string name="Mon" >Monday</string>
-    <string name="Tues" >Tuesday</string>
-    <string name="Wed" >Wednesday</string>
-    <string name="Thur" >Thursday</string>
-    <string name="Fri" >Friday</string>
+    <string name="Mon">Monday</string>
+    <string name="Tues">Tuesday</string>
+    <string name="Wed">Wednesday</string>
+    <string name="Thur">Thursday</string>
+    <string name="Fri">Friday</string>
 
     <string-array name="category">
         <item>@string/residence</item>
@@ -103,5 +103,12 @@
     <string name="more">more</string>
     <string name="success">"Update Profile Success "</string>
     <string name="version_test">This feature available On Newer versions</string>
+    <string name="YourPosts">Your Posts</string>
+    <string name="update">update Post</string>
+    <string name="deletepost">Delete Post</string>
+    <string name="delete_title">Delete Alert !</string>
+    <string name="delete_msg">Are you sure you want to delete this post ?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 
 </resources>
