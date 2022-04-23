@@ -188,8 +188,23 @@ public class OwnerDetailsFragment extends Fragment implements AdapterView.OnItem
         firestore.collection(cat).document(id).update("contact",binding.owncontactName.getText().toString());
         firestore.collection(cat).document(id).update("st_day",st_day);
         firestore.collection(cat).document(id).update("end_day",end_day);
-        firestore.collection(cat).document(id).update("fromtime",fromtime);
-        firestore.collection(cat).document(id).update("totime",totime);
+
+
+        if(!binding.ownstartTimebtn.getText().toString().equalsIgnoreCase(getResources().getString(R.string.opentime))){
+
+            firestore.collection(cat).document(id).update("fromtime",fromtime);
+        }else {
+            Toast.makeText(getActivity(), "Time still same", Toast.LENGTH_SHORT).show();
+        }
+
+        if(!binding.ownendTimebtn.getText().toString().equalsIgnoreCase(getResources().getString(R.string.closetime))){
+
+            firestore.collection(cat).document(id).update("totime",totime);
+        }else {
+            Toast.makeText(getActivity(), "Time still same", Toast.LENGTH_SHORT).show();
+
+        }
+
 
 
     }

@@ -6,7 +6,7 @@
     <string name="placename">Place name</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
-    <string name="register">Sign Up</string>
+    <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -29,7 +29,7 @@
     <string name="open">open</string>
     <string name="close">close</string>
     <string name="edit">Edit Profile</string>
-    <string name="residence">Student Housing</string>
+    <string name="residence">StudentHousing</string>
     <string name="libraries">Library</string>
     <string name="available">available</string>
     <string name="contact">Contact way</string>
