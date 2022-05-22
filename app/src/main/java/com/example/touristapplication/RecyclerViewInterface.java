@@ -1,5 +1,5 @@
 package com.example.touristapplication;
 
 public interface RecyclerViewInterface {
-    void onItemClick(int position);
+    void onItemClick(Integer position);
 }

@@ -43,7 +43,7 @@ import java.util.ArrayList;
 public class RestaurantsFragment extends Fragment implements RecyclerViewInterface {
     FragmentRestaurantsBinding binding;
     private MainPostsAdaptar mainPostsAdaptar;
-    private ArrayList<Place> placesArrayList;
+    private ArrayList<Place> placesArrayList , filteredList;
     private ArrayList<SlideModel> ImagesPlaceArraylist;
     private FirebaseFirestore mFirebaseFirestore;
     private Place imgPlace = new Place();
@@ -97,6 +97,7 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
         mFirebaseFirestore = FirebaseFirestore.getInstance();
 
 
+
         initRecycler();
         RetrieveNewsData();
 
@@ -122,7 +123,8 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
     }
 
     private void filter(String text) {
-        ArrayList<Place> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
+
 
         for (Place item : placesArrayList) {
             if (item.getPlace_name().toLowerCase().contains(text.toLowerCase())) {
@@ -202,33 +204,60 @@ public class RestaurantsFragment extends Fragment implements RecyclerViewInterfa
 
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(Integer position) {
         Intent intent = new Intent(getActivity(), MainActivity2.class);
 
+if (filteredList != null){
+    intent.putExtra("name", filteredList.get(position).getOwnerName());
+    intent.putExtra("place name", filteredList.get(position).getPlace_name());
+    intent.putExtra("st_day", filteredList.get(position).getSt_day());
+    intent.putExtra("end_day", filteredList.get(position).getEnd_day());
+    intent.putExtra("st_time", filteredList.get(position).getFromtime());
+    intent.putExtra("end_time", filteredList.get(position).getTotime());
+    intent.putExtra("desc", filteredList.get(position).getDescName());
+    intent.putExtra("contact", filteredList.get(position).getContact());
 
 
-        intent.putExtra("name", placesArrayList.get(position).getOwnerName());
-        intent.putExtra("place name", placesArrayList.get(position).getPlace_name());
-        intent.putExtra("st_day", placesArrayList.get(position).getSt_day());
-        intent.putExtra("end_day", placesArrayList.get(position).getEnd_day());
-        intent.putExtra("st_time", placesArrayList.get(position).getFromtime());
-        intent.putExtra("end_time", placesArrayList.get(position).getTotime());
-        intent.putExtra("desc", placesArrayList.get(position).getDescName());
-        intent.putExtra("contact", placesArrayList.get(position).getContact());
+
+
+    ArrayList<String> x = (ArrayList<String>) filteredList.get(position).getImgTags();
+
+
+    intent.putExtra("imgTags", x);
 
 
 
 
-        ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
-     //   Log.d("list", "onItemClick: "+ x);
+    binding.resttxt.getText().clear();
+    startActivity(intent);
 
-        intent.putExtra("imgTags", x);
+}else {
 
-//        Bundle bundle = new Bundle();
-//        bundle.putSerializable("key", x);
+    intent.putExtra("name", placesArrayList.get(position).getOwnerName());
+    intent.putExtra("place name", placesArrayList.get(position).getPlace_name());
+    intent.putExtra("st_day", placesArrayList.get(position).getSt_day());
+    intent.putExtra("end_day", placesArrayList.get(position).getEnd_day());
+    intent.putExtra("st_time", placesArrayList.get(position).getFromtime());
+    intent.putExtra("end_time", placesArrayList.get(position).getTotime());
+    intent.putExtra("desc", placesArrayList.get(position).getDescName());
+    intent.putExtra("contact", placesArrayList.get(position).getContact());
 
 
-        startActivity(intent);
+
+
+
+
+    ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
+
+    intent.putExtra("imgTags", x);
+
+
+
+
+    startActivity(intent);
+}
+
+
 
     }
 }

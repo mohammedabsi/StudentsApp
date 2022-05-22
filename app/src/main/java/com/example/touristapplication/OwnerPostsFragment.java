@@ -179,7 +179,7 @@ public class OwnerPostsFragment extends Fragment implements RecyclerViewInterfac
 
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(Integer position) {
 
 
 

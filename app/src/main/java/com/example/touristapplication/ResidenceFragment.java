@@ -35,7 +35,7 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
 
     FragmentResidenceBinding binding;
     private MainPostsAdaptar mainPostsAdaptar;
-    private ArrayList<Place> placesArrayList;
+    private ArrayList<Place> placesArrayList , filteredList;
     private FirebaseFirestore mFirebaseFirestore;
     LinearLayoutManager layoutManager ;
 
@@ -114,7 +114,7 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
     }
 
     private void filter(String text) {
-        ArrayList<Place> filteredList = new ArrayList<>();
+        filteredList = new ArrayList<>();
 
         for (Place item : placesArrayList) {
             if (item.getPlace_name().toLowerCase().contains(text.toLowerCase())) {
@@ -136,7 +136,7 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
 
     public void RetrieveNewsData() {
 
-        mFirebaseFirestore.collection("Student Housing").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        mFirebaseFirestore.collection("StudentHousing").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 if (error != null) {
@@ -166,23 +166,44 @@ public class ResidenceFragment extends Fragment implements RecyclerViewInterface
     }
 
     @Override
-    public void onItemClick(int position) {
+    public void onItemClick(Integer position) {
         Intent intent = new Intent(getActivity(), MainActivity2.class);
-        Bundle bundle = new Bundle();
-        intent.putExtra("name",placesArrayList.get(position).getOwnerName());
-        intent.putExtra("imageurl",placesArrayList.get(position).getImageUrl());
-        intent.putExtra("place name",placesArrayList.get(position).getPlace_name());
-        intent.putExtra("st_day",placesArrayList.get(position).getSt_day());
-        intent.putExtra("end_day",placesArrayList.get(position).getEnd_day());
-        intent.putExtra("st_time",placesArrayList.get(position).getFromtime());
-        intent.putExtra("end_time",placesArrayList.get(position).getTotime());
-        intent.putExtra("desc",placesArrayList.get(position).getDescName());
-        intent.putExtra("contact",placesArrayList.get(position).getContact());
-        ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
-        //   Log.d("list", "onItemClick: "+ x);
 
-        intent.putExtra("imgTags", x);
+        if (filteredList != null){
+            intent.putExtra("name",filteredList.get(position).getOwnerName());
+            intent.putExtra("imageurl",filteredList.get(position).getImageUrl());
+            intent.putExtra("place name",filteredList.get(position).getPlace_name());
+            intent.putExtra("st_day",filteredList.get(position).getSt_day());
+            intent.putExtra("end_day",filteredList.get(position).getEnd_day());
+            intent.putExtra("st_time",filteredList.get(position).getFromtime());
+            intent.putExtra("end_time",filteredList.get(position).getTotime());
+            intent.putExtra("desc",filteredList.get(position).getDescName());
+            intent.putExtra("contact",filteredList.get(position).getContact());
+            ArrayList<String> x = (ArrayList<String>) filteredList.get(position).getImgTags();
+            binding.residencstxt.getText().clear();
+            intent.putExtra("imgTags", x);
 
-        startActivity(intent);
+            startActivity(intent);
+
+        }else {
+            intent.putExtra("name",placesArrayList.get(position).getOwnerName());
+            intent.putExtra("imageurl",placesArrayList.get(position).getImageUrl());
+            intent.putExtra("place name",placesArrayList.get(position).getPlace_name());
+            intent.putExtra("st_day",placesArrayList.get(position).getSt_day());
+            intent.putExtra("end_day",placesArrayList.get(position).getEnd_day());
+            intent.putExtra("st_time",placesArrayList.get(position).getFromtime());
+            intent.putExtra("end_time",placesArrayList.get(position).getTotime());
+            intent.putExtra("desc",placesArrayList.get(position).getDescName());
+            intent.putExtra("contact",placesArrayList.get(position).getContact());
+            ArrayList<String> x = (ArrayList<String>) placesArrayList.get(position).getImgTags();
+            //   Log.d("list", "onItemClick: "+ x);
+
+            intent.putExtra("imgTags", x);
+
+            startActivity(intent);
+        }
+
+
+
     }
 }
