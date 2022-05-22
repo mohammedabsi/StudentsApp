@@ -2,15 +2,19 @@ package com.example.touristapplication;
 
 import static java.util.Locale.getDefault;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.os.Handler;
@@ -131,6 +135,14 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
         //spinner 2
         binding.todayspinner.setAdapter(adapter);
         binding.todayspinner.setOnItemSelectedListener(this);
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+        }
+
+        if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
 
 
         binding.createPlaceBtn.setOnClickListener(new View.OnClickListener() {
@@ -293,6 +305,8 @@ public class CreateFragment extends Fragment implements AdapterView.OnItemSelect
 
         timePickerDialog.show();
     }
+
+
 
     public void UploadImageList() {
         binding.createPlaceProgress.setVisibility(View.VISIBLE);
